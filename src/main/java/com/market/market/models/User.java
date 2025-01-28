@@ -2,6 +2,7 @@ package com.market.market.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -28,40 +29,40 @@ public class User {
     private Long id;
 
     /**
-     * First name of the user. Must be between 3 and 20 characters.
+     * First name of the user. Must be between 3 and 20 characters long.
      */
-    @NotNull(message = "{firstName.NotNull}")
+    @NotBlank(message = "{firstName.NotBlank}")
     @Size(min = 3, max = 20, message = "{firstName.Size}")
     @Column(name = "firstName")
     private String firstName;
 
     /**
-     * Last name of the user. Must be between 3 and 20 characters.
+     * Last name of the user. Must be between 3 and 20 characters long.
      */
-    @NotNull(message = "{lastName.NotNull}")
+    @NotBlank(message = "{lastName.NotBlank}")
     @Size(min = 3, max = 20, message = "{lastName.Size}")
     @Column(name = "lastName")
     private String lastName;
 
     /**
-     * Username of the user. Must be between 3 and 50 characters.
+     * Username of the user. Must be between 3 and 50 characters long.
      */
-    @NotNull(message = "{username.NotNull}")
+    @NotBlank(message = "{username.NotBlank}")
     @Size(min = 3, max = 50, message = "{username.Size}")
     @Column(name = "username", unique = true)
     private String username;
 
     /**
-     * CPF of the user. Must have exactly 11 characters and be unique.
+     * CPF of the user. Must have exactly 11 characters long and be unique.
      */
-    @NotNull(message = "{CPF.NotNull}")
+    @NotBlank(message = "{CPF.NotBlank}")
     @Column(name = "CPF", unique = true)
     private String CPF;
 
     /**
      * Email of the user. Must be between 6 and 320 characters.
      */
-    @NotNull(message = "{email.NotNull}")
+    @NotBlank(message = "{email.NotBlank}")
     @Size(min = 6, max = 320, message = "{email.Size}")
     @Email(message = "{email.Invalid}")
     @Column(name = "email", unique = true)
@@ -70,7 +71,7 @@ public class User {
     /**
      * Password of the user. Must be between 6 and 60 characters.
      */
-    @NotNull(message = "{password.NotNull}")
+    @NotBlank(message = "{password.NotBlank}")
     @Size(min = 6, max = 60, message = "{password.Size}")
     @Column(name = "password")
     private String password;

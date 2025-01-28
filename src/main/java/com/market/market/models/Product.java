@@ -1,10 +1,11 @@
 package com.market.market.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -33,16 +34,16 @@ public class Product {
     /**
      * Name of the product. Must be between 3 and 60 characters.
      */
-    @NotNull(message = "{name.NotNull}")
-    @Size(min = 3, max = 60, message = "{name.NotNull}")
+    @NotBlank(message = "{name.NotBlank}")
+    @Size(min = 3, max = 60, message = "{name.Size}")
     @Column(name = "name")
     private String name;
 
     /**
      * Brand of the product. Must be between 3 and 60 characters.
      */
-    @NotNull(message = "{brand.NotNull}")
-    @Size(min = 3, max = 60, message = "{brand.NotNull}")
+    @NotBlank(message = "{brand.NotBlank}")
+    @Size(min = 3, max = 60, message = "{brand.Size}")
     @Column(name = "brand")
     private String brand;
 
