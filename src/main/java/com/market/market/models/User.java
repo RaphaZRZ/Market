@@ -6,6 +6,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+/**
+ * Represents a user in the system.
+ * A user has a first name, last name, username, CPF, email, password, and type.
+ * It is mapped to the "users" table in the database.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,41 +19,65 @@ import lombok.*;
 @Entity(name = "users")
 @Table(name = "users")
 public class User {
+    /**
+     * Unique identifier for the user.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
     private Long id;
 
+    /**
+     * First name of the user. Must be between 3 and 20 characters.
+     */
     @NotNull(message = "{firstName.NotNull}")
     @Size(min = 3, max = 20, message = "{firstName.Size}")
     @Column(name = "firstName")
     private String firstName;
 
+    /**
+     * Last name of the user. Must be between 3 and 20 characters.
+     */
     @NotNull(message = "{lastName.NotNull}")
     @Size(min = 3, max = 20, message = "{lastName.Size}")
     @Column(name = "lastName")
     private String lastName;
 
+    /**
+     * Username of the user. Must be between 3 and 50 characters.
+     */
     @NotNull(message = "{username.NotNull}")
     @Size(min = 3, max = 50, message = "{username.Size}")
     @Column(name = "username", unique = true)
     private String username;
 
+    /**
+     * CPF of the user. Must have exactly 11 characters and be unique.
+     */
     @NotNull(message = "{CPF.NotNull}")
     @Column(name = "CPF", unique = true)
     private String CPF;
 
+    /**
+     * Email of the user. Must be between 6 and 320 characters.
+     */
     @NotNull(message = "{email.NotNull}")
     @Size(min = 6, max = 320, message = "{email.Size}")
     @Email(message = "{email.Invalid}")
     @Column(name = "email", unique = true)
     private String email;
 
+    /**
+     * Password of the user. Must be between 6 and 60 characters.
+     */
     @NotNull(message = "{password.NotNull}")
     @Size(min = 6, max = 60, message = "{password.Size}")
     @Column(name = "password")
     private String password;
 
+    /**
+     * Type of the user, indicating their role or permission level in the system.
+     */
     @NotNull(message = "{userType.NotNull}")
     @Enumerated(EnumType.STRING)
     @Column(name = "userType")
