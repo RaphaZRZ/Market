@@ -13,16 +13,37 @@ while the application is running. Make sure you're using the correct port, in th
 
 <h2>About the project</h2>
 <p>
-Market is an e-commerce platform. It allows users to insert, list, update and delete products available in the 
+Market is an e-commerce platform. It allows users to buy, list ,insert, update and delete products available in the 
 market. The system has four types of users: Owner, Manager, Stocker and Client.
 </p>
 
 
-
 <h2>Business Rules</h2>
 <ul> 
-    <li>All types of users have a first name, last name, username, CPF, email, password and type. The username, email, and CPF must be unique in the system. Therefore, the system allows only one registration with the same username, email, or CPF;</li>
-    <li>Clients can only list products;</li>
+    <li>All types of users have a first name, last name, username, CPF, email, password and type. The username, email, 
+        and CPF must be unique in the system. Therefore, the system allows only one registration with the same username, 
+        email, or CPF;</li>
+    <li>Validation for user fields
+        <ul>
+            <li><strong>First Name:</strong> Must not be null. Length should be between 3 and 20 characters.</li>
+            <li><strong>Last Name:</strong> Must not be null. Length should be between 3 and 20 characters.</li>
+            <li><strong>Username:</strong> Must not be null. Length should be between 3 and 50 characters. It must be unique in the system.</li>
+            <li><strong>CPF:</strong> Must not be null. It must be unique in the system.</li>
+            <li><strong>Email:</strong> Must not be null. It must be a valid email format and its length should be between 6 and 320 characters. The email must be unique in the system.</li>
+            <li><strong>Password:</strong> Must not be null. Length should be between 6 and 60 characters.</li>
+            <li><strong>User Type:</strong> Must not be null. The user type is an enumerated field representing the type of the user (e.g., CLIENT, STOCKER, MANAGER, OWNER).</li>
+        </ul>
+    </li>
+    <li>All products have a name, brand, price and quantity</li>
+    <li>Validation for product fields
+        <ul>
+            <li><strong>Name:</strong> Must not be null. Length should be between 3 and 60 characters.</li>
+            <li><strong>Brand:</strong> Must not be null. Length should be between 3 and 60 characters.</li>
+            <li><strong>Price:</strong> Must not be null. The value must be positive (greater than 0).</li>
+            <li><strong>Quantity:</strong> Must not be null. It represents the available stock of the product.</li>
+        </ul>
+    </li>
+    <li>Clients can buy and list products;</li>
     <li>Stockers can list and insert products;</li>
     <li>Managers can list, insert, and update products;</li>
     <li>Owners can list, insert, update, and delete products;</li>
