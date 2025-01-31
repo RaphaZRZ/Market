@@ -57,6 +57,7 @@ public class User {
      * CPF of the user. Must have exactly 11 characters long and be unique.
      */
     @NotBlank(message = "{CPF.NotBlank}")
+    @Size(min = 11, max = 11, message = "{CPF.Size}")
     @Column(name = "CPF", unique = true)
     private String CPF;
 
