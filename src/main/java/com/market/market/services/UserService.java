@@ -32,11 +32,12 @@ public class UserService {
     public void saveUser(User user) {
         this.userRepository.save(user);
     }
-
+/*
     @Transactional
-    public User createUser(UserDTO userData) throws Exception{
-        User user = new User(userData);
+    public User createUser(UserDTO userDTO) throws Exception{
+        User user = new User(userDTO);
         saveUser(user);
         return user;
     }
+ */
 }

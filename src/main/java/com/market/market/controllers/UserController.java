@@ -36,17 +36,17 @@ public class UserController {
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping("/username/{username}")
+    @GetMapping("/email/{email}")
     public ResponseEntity<User> findByEmail(@PathVariable String email) throws Exception {
         User obj = this.userService.findUserByEmail(email);
         return ResponseEntity.ok().body(obj);
     }
-
+/*
     // POST MAPPINGS
     @Validated
     @PostMapping
     public ResponseEntity<User> createUser(@Valid @RequestBody UserDTO userDTO) throws Exception{
         User user = this.userService.createUser(userDTO);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
-    }
+    }*/
 }

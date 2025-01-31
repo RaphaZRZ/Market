@@ -86,7 +86,6 @@ public class User {
     @Column(name = "user_type")
     private UserType userType;
 
-
     /**
      * Constructs a new User instance from a UserDTO object.
      * Initializes the user with the provided first name, last name, username, CPF, email, password, and user type.
@@ -94,6 +93,7 @@ public class User {
      * @param userDTO The UserDTO containing user data.
      * @throws Exception if an error occurs during object creation.
      */
+    /*
     public User(UserDTO userDTO) throws Exception {
         this.firstName = userDTO.firstName();
         this.lastName = userDTO.lastName();
@@ -103,4 +103,5 @@ public class User {
         this.password = userDTO.password();
         this.userType = userDTO.userType();
     }
+*/
 }
