@@ -1,5 +1,6 @@
 package com.market.market.models;
 
+import com.market.market.dtos.UserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -33,7 +34,7 @@ public class User {
      */
     @NotBlank(message = "{firstName.NotBlank}")
     @Size(min = 3, max = 20, message = "{firstName.Size}")
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
     /**
@@ -41,7 +42,7 @@ public class User {
      */
     @NotBlank(message = "{lastName.NotBlank}")
     @Size(min = 3, max = 20, message = "{lastName.Size}")
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
     /**
@@ -81,6 +82,24 @@ public class User {
      */
     @NotNull(message = "{userType.NotNull}")
     @Enumerated(EnumType.STRING)
-    @Column(name = "userType")
+    @Column(name = "user_type")
     private UserType userType;
+
+
+    /**
+     * Constructs a new User instance from a UserDTO object.
+     * Initializes the user with the provided first name, last name, username, CPF, email, password, and user type.
+     *
+     * @param userDTO The UserDTO containing user data.
+     * @throws Exception if an error occurs during object creation.
+     */
+    public User(UserDTO userDTO) throws Exception {
+        this.firstName = userDTO.firstName();
+        this.lastName = userDTO.lastName();
+        this.username = userDTO.username();
+        this.CPF = userDTO.CPF();
+        this.email = userDTO.email();
+        this.password = userDTO.password();
+        this.userType = userDTO.userType();
+    }
 }
