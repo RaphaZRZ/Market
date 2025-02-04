@@ -93,7 +93,6 @@ public class User {
      * @param userDTO The UserDTO containing user data.
      * @throws Exception if an error occurs during object creation.
      */
-    /*
     public User(UserDTO userDTO) throws Exception {
         this.firstName = userDTO.firstName();
         this.lastName = userDTO.lastName();
@@ -103,5 +102,4 @@ public class User {
         this.password = userDTO.password();
         this.userType = userDTO.userType();
     }
-*/
 }
