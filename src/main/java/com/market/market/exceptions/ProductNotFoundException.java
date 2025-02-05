@@ -3,11 +3,11 @@ package com.market.market.exceptions;
 import lombok.Getter;
 
 @Getter
-public class UserNotFoundException extends RuntimeException {
+public class ProductNotFoundException extends RuntimeException {
     private final int statusCode;
 
-    public UserNotFoundException() {
-        super("User not found.");
+    public ProductNotFoundException() {
+        super("Product not found.");
         this.statusCode = 404;
     }
 }
