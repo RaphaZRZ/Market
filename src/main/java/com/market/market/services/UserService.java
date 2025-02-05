@@ -13,19 +13,19 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public User findUserById(Long id) throws Exception {
+    public User findUserById(Long id) {
         return this.userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 
-    public User findUserByUsername(String username) throws Exception {
+    public User findUserByUsername(String username) {
         return this.userRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
     }
 
-    public User findUserByCPF(String CPF) throws Exception {
+    public User findUserByCPF(String CPF) {
         return this.userRepository.findByCPF(CPF).orElseThrow(UserNotFoundException::new);
     }
 
-    public User findUserByEmail(String email) throws Exception {
+    public User findUserByEmail(String email) {
         return this.userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
     }
 
@@ -34,7 +34,7 @@ public class UserService {
     }
 
     @Transactional
-    public User createUser(UserDTO userDTO) throws Exception{
+    public User createUser(UserDTO userDTO) throws Exception {
         User user = new User(userDTO);
         saveUser(user);
         return user;
