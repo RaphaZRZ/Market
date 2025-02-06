@@ -23,26 +23,7 @@ market. The system has four types of users: Owner, Manager, Stocker and Client.
     <li>All types of users have a first name, last name, username, CPF, email, password and type. The username, email, 
         and CPF must be unique in the system. Therefore, the system allows only one registration with the same username, 
         email, or CPF;</li>
-    <li>Validation for user fields
-        <ul>
-            <li><strong>First Name:</strong> Must not be null. Length should be between 3 and 20 characters.</li>
-            <li><strong>Last Name:</strong> Must not be null. Length should be between 3 and 20 characters.</li>
-            <li><strong>Username:</strong> Must not be null. Length should be between 3 and 50 characters. It must be unique in the system.</li>
-            <li><strong>CPF:</strong> Must not be null. It must be unique in the system.</li>
-            <li><strong>Email:</strong> Must not be null. It must be a valid email format and its length should be between 6 and 320 characters. The email must be unique in the system.</li>
-            <li><strong>Password:</strong> Must not be null. Length should be between 6 and 60 characters.</li>
-            <li><strong>User Type:</strong> Must not be null. The user type is an enumerated field representing the type of the user (e.g., CLIENT, STOCKER, MANAGER, OWNER).</li>
-        </ul>
-    </li>
     <li>All products have a name, brand, price and quantity</li>
-    <li>Validation for product fields
-        <ul>
-            <li><strong>Name:</strong> Must not be null. Length should be between 3 and 60 characters.</li>
-            <li><strong>Brand:</strong> Must not be null. Length should be between 3 and 60 characters.</li>
-            <li><strong>Price:</strong> Must not be null. The value must be positive (greater than 0).</li>
-            <li><strong>Quantity:</strong> Must not be null. It represents the available stock of the product.</li>
-        </ul>
-    </li>
     <li>Clients can buy and list products;</li>
     <li>Stockers can list and insert products;</li>
     <li>Managers can list, insert, and update products;</li>
@@ -50,9 +31,45 @@ market. The system has four types of users: Owner, Manager, Stocker and Client.
 </ul>
 
 
+<h2>Validations</h2>
+<ul>
+    <li>Validation for user fields:
+        <ul>
+            <li><strong>First Name:</strong> Must not be null. Length should be between 3 and 20 characters;</li>
+            <li><strong>Last Name:</strong> Must not be null. Length should be between 3 and 20 characters;</li>
+            <li><strong>Username:</strong> Must not be null. Length should be between 3 and 50 characters. It must be unique in the system;</li>
+            <li><strong>CPF:</strong> Must not be null. It must be unique in the system;</li>
+            <li><strong>Email:</strong> Must not be null. It must be a valid email format and its length should be between 6 and 320 characters. The email must be unique in the system;</li>
+            <li><strong>Password:</strong> Must not be null. Length should be between 6 and 60 characters;</li>
+            <li><strong>User Type:</strong> Must not be null. The user type is an enumerated field representing the type of the user (e.g., CLIENT, STOCKER, MANAGER, OWNER);</li>
+        </ul>
+    </li>
+    <li>Values that can be changed:
+        <ul>
+            <li><strong>Username;</strong></li>
+            <li><strong>Password.</strong></li>
+        </ul>
+    </li>
+    <br>
+    <li>Validation for product fields:
+        <ul>
+            <li><strong>Name:</strong> Must not be null. Length should be between 3 and 60 characters;</li>
+            <li><strong>Brand:</strong> Must not be null. Length should be between 3 and 60 characters;</li>
+            <li><strong>Price:</strong> Must not be null. The value must be positive (greater than 0);</li>
+            <li><strong>Quantity:</strong> Must not be null. It represents the available stock of the product.</li>
+        </ul>
+    </li>
+    <li>Values that can be changed:
+        <ul>
+            <li><strong>Price.</strong></li>
+        </ul>
+    </li>
+</ul>
+
+
 <h2>What I Have Learned</h2>
 <ul>
-  <li><strong>TITLE</strong>DESCRIPTION</li>
+  <li><strong>TITLE</strong> DESCRIPTION(not implemented)</li>
 </ul>
 
 
