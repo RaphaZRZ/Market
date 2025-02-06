@@ -1,5 +1,6 @@
 package com.market.market.models;
 
+import com.market.market.dtos.ProductDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -62,4 +63,16 @@ public class Product {
     @PositiveOrZero(message = "{quantity.PositiveOrZero}")
     @Column(name = "quantity")
     private Integer quantity;
+
+    /**
+     * Constructor that creates a `Product` object from a `ProductDTO`.
+     *
+     * @param productDTO the DTO containing the product data to initialize the product.
+     */
+    public Product(ProductDTO productDTO) {
+        this.name = productDTO.name();
+        this.brand = productDTO.brand();
+        this.price = productDTO.price();
+        this.quantity = productDTO.quantity();
+    }
 }
