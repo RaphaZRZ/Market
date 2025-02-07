@@ -61,7 +61,8 @@ market. The system has four types of users: Owner, Manager, Stocker and Client.
     </li>
     <li>Values that can be changed:
         <ul>
-            <li><strong>Price.</strong></li>
+            <li><strong>Price;</strong></li>
+            <li><strong>Quantity;</strong></li>
         </ul>
     </li>
 </ul>
