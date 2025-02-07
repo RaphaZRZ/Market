@@ -62,6 +62,7 @@ public class ProductService {
     public void updateProductById(UpdateProductDTO updateProductDTO, Long id) {
         Product product = this.productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
         product.setPrice(updateProductDTO.price());
+        product.setQuantity(updateProductDTO.quantity());
         saveProduct(product);
     }
 
