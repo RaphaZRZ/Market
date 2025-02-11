@@ -1,5 +1,6 @@
 package com.market.market.controllers;
 
+import com.market.market.dtos.UpdateUserDTO;
 import com.market.market.dtos.UserDTO;
 import com.market.market.models.User;
 import com.market.market.services.UserService;
@@ -37,7 +38,7 @@ public class UserController {
     }
 
     @GetMapping("/email/{email}")
-    public ResponseEntity<User> findByEmail(@PathVariable String email) throws Exception {
+    public ResponseEntity<User> findByEmail(@PathVariable String email) {
         User obj = this.userService.findUserByEmail(email);
         return ResponseEntity.ok().body(obj);
     }
@@ -45,8 +46,24 @@ public class UserController {
     // POST MAPPINGS
     @Validated
     @PostMapping
-    public ResponseEntity<User> createUser(@Valid @RequestBody UserDTO userDTO) throws Exception{
+    public ResponseEntity<User> createUser(@Valid @RequestBody UserDTO userDTO) throws Exception {
         User user = this.userService.createUser(userDTO);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
+    }
+
+    // PUT MAPPINGS
+    @Validated
+    @PutMapping("/id/{id}")
+    public ResponseEntity<Void> updateUserById(@Valid @RequestBody UpdateUserDTO updateUserDTO, @PathVariable Long id) {
+        this.userService.updateUserById(updateUserDTO, id);
+        return ResponseEntity.noContent().build();
+    }
+
+    // DELETE MAPPINGS
+    @Validated
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<Void> deleteUserById(@PathVariable Long id) {
+        this.userService.deleteUserById(id);
+        return ResponseEntity.noContent().build();
     }
 }
