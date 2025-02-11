@@ -74,7 +74,7 @@ market. The system has four types of users: Owner, Manager, Stocker and Client.
 </ul>
 
 
-<h2>Data to test the system(not implemented)</h2>
+<h2>Data to test the system</h2>
 <p>
 [<br>
     {
