@@ -1,8 +1,7 @@
 package com.market.market.configs;
 
 import com.market.market.dtos.ExceptionDTO;
-import com.market.market.exceptions.ProductNotFoundException;
-import com.market.market.exceptions.UserNotFoundException;
+import com.market.market.exceptions.*;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,29 +15,6 @@ import java.time.LocalDateTime;
  */
 @RestControllerAdvice
 public class ControllerExceptionHandler {
-
-    /**
-     * Handles UserNotFoundException and shows a "User not found." message.
-     *
-     * @return a ResponseEntity containing the exception details with a (404) status code.
-     */
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ExceptionDTO> handleUserNotFoundException(UserNotFoundException exception) {
-        ExceptionDTO exceptionDTO = new ExceptionDTO(LocalDateTime.now(), exception.getMessage(), exception.getStatusCode());
-        return ResponseEntity.status(exception.getStatusCode()).body(exceptionDTO);
-    }
-
-    /**
-     * Handles ProductNotFoundException and shows a "Product not found." message.
-     *
-     * @return a ResponseEntity containing the exception details with a (404) status code.
-     */
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<ExceptionDTO> handleProductNotFoundException(ProductNotFoundException exception) {
-        ExceptionDTO exceptionDTO = new ExceptionDTO(LocalDateTime.now(), exception.getMessage(), exception.getStatusCode());
-        return ResponseEntity.status(exception.getStatusCode()).body(exceptionDTO);
-    }
-
     /**
      * Handles ConstraintViolationException, typically triggered by validation errors
      * when saving or updating data in the database.
@@ -66,6 +42,61 @@ public class ControllerExceptionHandler {
 
         ExceptionDTO exceptionDTO = new ExceptionDTO(LocalDateTime.now(), errorMessage.toString(), 400);
         return ResponseEntity.badRequest().body(exceptionDTO);
+    }
+
+    /**
+     * Handles UserNotFoundException and shows a "User not found." message.
+     *
+     * @return a ResponseEntity containing the exception details with a (404) status code.
+     */
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ExceptionDTO> handleUserNotFoundException(UserNotFoundException exception) {
+        ExceptionDTO exceptionDTO = new ExceptionDTO(LocalDateTime.now(), exception.getMessage(), exception.getStatusCode());
+        return ResponseEntity.status(exception.getStatusCode()).body(exceptionDTO);
+    }
+
+    /**
+     * Handles ProductNotFoundException and shows a "Product not found." message.
+     *
+     * @return a ResponseEntity containing the exception details with a (404) status code.
+     */
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ExceptionDTO> handleProductNotFoundException(ProductNotFoundException exception) {
+        ExceptionDTO exceptionDTO = new ExceptionDTO(LocalDateTime.now(), exception.getMessage(), exception.getStatusCode());
+        return ResponseEntity.status(exception.getStatusCode()).body(exceptionDTO);
+    }
+
+    /**
+     * Handles UsernameAlreadyRegisteredException and shows a "Username already registered." message.
+     *
+     * @return a ResponseEntity containing the exception details with a (409) status code.
+     */
+    @ExceptionHandler(UsernameAlreadyRegisteredException.class)
+    public ResponseEntity<ExceptionDTO> handleUsernameAlreadyRegisteredException(UsernameAlreadyRegisteredException exception) {
+        ExceptionDTO exceptionDTO = new ExceptionDTO(LocalDateTime.now(), exception.getMessage(), exception.getStatusCode());
+        return ResponseEntity.status(exception.getStatusCode()).body(exceptionDTO);
+    }
+
+    /**
+     * Handles CPFAlreadyRegisteredException and shows a "CPF already registered." message.
+     *
+     * @return a ResponseEntity containing the exception details with a (409) status code.
+     */
+    @ExceptionHandler(CPFAlreadyRegisteredException.class)
+    public ResponseEntity<ExceptionDTO> handleCPFAlreadyRegisteredException(CPFAlreadyRegisteredException exception) {
+        ExceptionDTO exceptionDTO = new ExceptionDTO(LocalDateTime.now(), exception.getMessage(), exception.getStatusCode());
+        return ResponseEntity.status(exception.getStatusCode()).body(exceptionDTO);
+    }
+
+    /**
+     * Handles EmailAlreadyRegisteredException and shows a "Email already registered." message.
+     *
+     * @return a ResponseEntity containing the exception details with a (409) status code.
+     */
+    @ExceptionHandler(EmailAlreadyRegisteredException.class)
+    public ResponseEntity<ExceptionDTO> handleEmailAlreadyRegisteredException(EmailAlreadyRegisteredException exception) {
+        ExceptionDTO exceptionDTO = new ExceptionDTO(LocalDateTime.now(), exception.getMessage(), exception.getStatusCode());
+        return ResponseEntity.status(exception.getStatusCode()).body(exceptionDTO);
     }
 
     /**
