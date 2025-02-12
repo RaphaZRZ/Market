@@ -91,9 +91,8 @@ public class User {
      * Initializes the user with the provided first name, last name, username, CPF, email, password, and user type.
      *
      * @param userDTO The UserDTO containing user data.
-     * @throws Exception if an error occurs during object creation.
      */
-    public User(UserDTO userDTO) throws Exception {
+    public User(UserDTO userDTO) {
         this.firstName = userDTO.firstName();
         this.lastName = userDTO.lastName();
         this.username = userDTO.username();
