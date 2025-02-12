@@ -1,4 +1,6 @@
 package com.market.market.dtos;
 
-public record ExceptionDTO(String message, int statusCode) {
+import java.time.LocalDateTime;
+
+public record ExceptionDTO(LocalDateTime timestamp, String message, int statusCode) {
 }
