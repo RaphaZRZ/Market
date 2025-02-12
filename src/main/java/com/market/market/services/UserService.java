@@ -81,6 +81,9 @@ public class UserService {
      * @param updateUserDTO the DTO containing the updated user information.
      */
     public void updateUser(User updatedUser, UpdateUserDTO updateUserDTO) {
+        if (userRepository.existsByUsername(updateUserDTO.username()))
+            throw new UsernameAlreadyRegisteredException();
+
         updatedUser.setUsername(updateUserDTO.username());
         updatedUser.setPassword(updateUserDTO.password());
     }
@@ -90,10 +93,9 @@ public class UserService {
      *
      * @param userDTO the DTO containing the user information.
      * @return the newly created user.
-     * @throws Exception if any exception occurs during user creation.
      */
     @Transactional
-    public User createUser(UserDTO userDTO) throws Exception {
+    public User createUser(UserDTO userDTO) {
         if (this.userRepository.existsByUsername(userDTO.username()))
             throw new UsernameAlreadyRegisteredException();
         if (this.userRepository.existsByCPF(userDTO.CPF()))
