@@ -2,7 +2,10 @@ package com.market.market.services;
 
 import com.market.market.dtos.UpdateUserDTO;
 import com.market.market.dtos.UserDTO;
+import com.market.market.exceptions.CPFAlreadyRegisteredException;
+import com.market.market.exceptions.EmailAlreadyRegisteredException;
 import com.market.market.exceptions.UserNotFoundException;
+import com.market.market.exceptions.UsernameAlreadyRegisteredException;
 import com.market.market.models.User;
 import com.market.market.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +77,7 @@ public class UserService {
     /**
      * Updates the details of a user.
      *
-     * @param updatedUser the user to update.
+     * @param updatedUser   the user to update.
      * @param updateUserDTO the DTO containing the updated user information.
      */
     public void updateUser(User updatedUser, UpdateUserDTO updateUserDTO) {
@@ -91,6 +94,13 @@ public class UserService {
      */
     @Transactional
     public User createUser(UserDTO userDTO) throws Exception {
+        if (this.userRepository.existsByUsername(userDTO.username()))
+            throw new UsernameAlreadyRegisteredException();
+        if (this.userRepository.existsByCPF(userDTO.CPF()))
+            throw new CPFAlreadyRegisteredException();
+        if (this.userRepository.existsByEmail(userDTO.email()))
+            throw new EmailAlreadyRegisteredException();
+
         User user = new User(userDTO);
         saveUser(user);
         return user;
@@ -100,7 +110,7 @@ public class UserService {
      * Updates an existing user's details by their ID.
      *
      * @param updateUserDTO the DTO containing the updated user information.
-     * @param id the unique identifier of the user to update.
+     * @param id            the unique identifier of the user to update.
      * @throws UserNotFoundException if the user with the given id is not found.
      */
     @Transactional
