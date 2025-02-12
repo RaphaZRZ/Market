@@ -46,7 +46,7 @@ public class User {
     private String lastName;
 
     /**
-     * Username of the user. Must be between 3 and 50 characters long.
+     * Username of the user. Must be between 3 and 50 characters long and be unique.
      */
     @NotBlank(message = "{username.NotBlank}")
     @Size(min = 3, max = 50, message = "{username.Size}")
@@ -62,7 +62,7 @@ public class User {
     private String CPF;
 
     /**
-     * Email of the user. Must be between 6 and 320 characters.
+     * Email of the user. Must be between 6 and 320 characters and be unique.
      */
     @NotBlank(message = "{email.NotBlank}")
     @Size(min = 6, max = 320, message = "{email.Size}")
